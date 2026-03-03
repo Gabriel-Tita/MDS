@@ -1,0 +1,17 @@
+import requests
+
+# Coordonate pentru București
+url = "https://api.open-meteo.com/v1/forecast?latitude=44.4323&longitude=26.1063&current_weather=true"
+
+try:
+    response = requests.get(url)
+    data = response.json()
+    
+    temp = data["current_weather"]["temperature"]
+    wind = data["current_weather"]["windspeed"]
+    
+    print(f"Vremea în București:")
+    print(f"Temperatura: {temp}°C")
+    print(f"Viteza vântului: {wind} km/h")
+except Exception as e:
+    print(f"A apărut o eroare: {e}")
